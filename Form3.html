@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .main_container {
+      margin: auto;
+      width: 50%;
+      height: 50vh;
+      border: 2px solid black;
+    }
+    header {
+      text-align: center;
+    }
+    .name {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 5px;
+    }
+    .gender {
+      display: flex;
+      justify-content: start;
+    }
+    input {
+      width: 280px;
+    }
+    span {
+      color: red;
+    }
+    select{
+        width: 650px;
+        margin: auto;
+        margin-left: 20px;
+        justify-content: center;
+    }
+  </style>
+  <body>
+    <div class="main_container">
+      <header><h1>New Registration Form</h1></header>
+      <div class="name">
+        <label
+          >Name<span>*</span><br /><input
+            type="text"
+            placeholder="enter your name"
+        /></label>
+        <label
+          >Sir Name<span>*</span><br /><input
+            type="text"
+            placeholder="enter your fathername" /></label
+        ><br />
+      </div>
+      <div class="name">
+        <label
+          >Email<span>*</span><br /><input
+            type="text"
+            placeholder="enter your name"
+        /></label>
+        <label
+          >Father Name<span>*</span><br /><input
+            type="text"
+            placeholder="enter your fathername" /></label
+        ><br />
+      </div>
+      <div class="gender">
+        <label
+          >Gender<span
+            >*<br /><select class="genders">
+              <option value="select">select</option>
+              <option value="male">Male</option>
+              <option value="female">female</option>
+            </select></span
+          ></label
+        >
+      </div>
+    </div>
+  </body>
+</html>

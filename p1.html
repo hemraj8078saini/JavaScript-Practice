@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      position: absolute;
+      top: 5px;
+    }
+    .item {
+      width: 100px;
+      margin-right: 20px;
+      height: 100px;
+      background-color: aqua;
+    }
+    #item1 {
+      position: absolute;
+      top: 4px;
+    }
+    .first_div {
+      border:2px solid black;
+    }
+    .second_div {
+      border:2px solid green;
+    }
+  </style>
+  <body>
+    <div class="first_div">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem nesciunt
+      adipisci cum aliquam aliquid quasi quia debitis est, quaerat ducimus sed
+      tenetur. Voluptate eos ab ipsum ut cumque in veniam explicabo quasi.
+      Blanditiis, quaerat aperiam veniam suscipit ipsam vero praesentium!
+      <div class="second_div">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, est.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur
+        soluta provident accusantium reprehenderit, totam quae est. Praesentium
+        dolores odit ducimus, molestiae maxime veniam deleniti architecto
+        consectetur nam et ipsam quas.
+        <div class="container">
+          <div class="item" id="item1">1</div>
+          <div class="item" id="item2">2</div>
+          <div class="item" id="item3">3</div>
+          <div class="item" id="item4">4</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

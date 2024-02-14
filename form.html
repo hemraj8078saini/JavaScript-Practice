@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            border: 2px solid black;
+            width: 50%;
+            margin: auto;
+            margin-top:40px;
+            height: 100%;
+        }
+        h1{
+            text-align: center;
+            color:pink;
+        }
+        input{
+            width: 340px;
+        }
+        .Qualification input{
+            width:220px;
+        }
+        select {
+            width: 715px;
+            /* height: 400px; */
+        
+        }
+        .genderselect{
+            width: 100px;
+        }
+        .gender select{
+            width: 350px;
+        }
+        .name{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 5px;
+        }.email{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 5px;
+        }
+        .gender{
+            
+            display: flex;
+            justify-content: space-evenly;
+            padding: 5px;
+        }
+        
+        .city{
+            display: flex;
+            /* justify-content: space-evenly; */
+            padding-left: 22px;
+            width: 500px;
+            
+        }
+        .state{
+            display: flex;
+            padding-left: 22px;
+            padding-top: 8px;
+            width: 500px;
+            
+        }
+        .Qualification{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 5px;
+            margin-top:5px;
+            margin-bottom: 20px;
+
+        }
+        .btn{
+            width: auto;
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            margin: auto;
+            background-color: aqua;
+            padding:5px;
+            cursor: pointer;
+    
+        }
+        p{
+            text-align: center;
+        }
+        .gender2{
+            display: flex;
+            justify-content: space-between;
+            margin:auto;
+            /* border:2px solid black; */
+        }
+    /* media query */
+    @media screen and (min-width:260px) and (max-width:426px) {
+        .main{
+            border: 2px solid red;
+            width: 90%;
+            margin: auto;
+            height: auto;
+        }
+        h1{
+            font-size: small;
+            color:chocolate;
+        }
+        .name{
+            display: flex;
+            flex-direction: column;
+             }
+    input{
+            width: 300px;
+        }
+        .email{
+            display: flex;
+            flex-direction: column;
+        }
+        .gender{
+            
+            display: flex;
+            flex-direction: column;
+        }
+        select {
+            width: 500px;
+            /* height: 400px; */
+        
+        }
+        .Qualification{
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            margin-top:5px;
+            margin-bottom: 20px;
+        
+            
+
+        }
+        .city{
+            width: 300px;
+            /* border:2px solid black; */
+            /* color:red; */
+        }
+       
+}    
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Registration form</h1>
+        <div class="name">
+            <label>Name<span style="color:red">*</span><br><input type="text" placeholder="enter your name"></label>
+            <label>Sirname<span style="color:red">*</span><br><input type="text" placeholder="enter your name"></label>
+        </div>
+        <div class="email">
+            <label>Email<span style="color:red">*</span><br><input type="text" placeholder="enter your name"></label>
+            <label>Father's name<span style="color:red">*</span><br><input type="text" placeholder="enter your name"></label>
+        </div>
+        <div class="gender">
+            <label>gender<span style="color:red">*<br></span><select class="genderselect"><option value="male">select<option value="male">Male<option value="female">Female</option></option></select></label>
+            <label>Material status<span style="color:red">*<br></span><select class="genderselect"><option value="male">select<option value="male">Male<option value="female">Female</option></option></select></label>
+        </div>
+        <!-- <div class="gender2"><lable>Gender<span style="color:red">*</span><br>Male<input type="checkbox">Female<input type="checkbox">others<input type="checkbox"></lable></div>
+         -->
+        <div class="city">
+            <label>city<span style="color:red">*</span><select><option value="male">select<option value="male">jaipur<option value="female">ajmer</option></option></select></label>
+        </div>
+        <div class="state">
+            <label>state<span style="color:red">*</span><select><option value="male">select<option value="male">rajasthan<option value="female">delhi</option></option></select></label>
+        </div>
+        <div class="Qualification">
+            <label>10th marks<span style="color:red">*</span><br><input type="text" placeholder="enter your 10 marks"></label>
+            <label>12th marks<span style="color:red">*</span><br><input type="text" placeholder="enter your 12 marks"></label>
+            <label>graduation marks<span style="color:red">*</span><br><input type="text" placeholder="enter your graduation marks"></label>
+        </div>
+    
+        <div class="btn"><button>Register</button></div>
+        <p>Already have a acount <a href="/login.html">login</a></p>
+    </div>
+</body>
+</html>
