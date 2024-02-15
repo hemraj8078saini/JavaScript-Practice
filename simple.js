@@ -15,6 +15,7 @@ let arr=[1,2,3,4,5,6]
     if(i%2==0)
     {
     console.log(i);
+    console.log("values")
     }
 })
 // sum(4,5);
