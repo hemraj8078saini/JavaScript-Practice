@@ -9,3 +9,6 @@ function writen(name,age,qualification){
 }
 const details = new  writen("John", 50, "Graduation");
 console.log(details)
+
+
+
