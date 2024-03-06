@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body></body>
+  <script>
+    async function postdata() {
+      let arr = [];
+      try { 
+           let res = axios.get("http://localhost:3000/posts");
+           let arr=res;
+        console.log(res);
+        console.log("hello");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    postdata()
+  </script>
+</html>
