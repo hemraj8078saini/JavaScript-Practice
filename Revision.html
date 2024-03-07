@@ -8,17 +8,38 @@
   </head>
   <body></body>
   <script>
-    async function postdata() {
-      let arr = [];
-      try { 
-           let res = axios.get("http://localhost:3000/posts");
-           let arr=res;
-        console.log(res);
+    async function getdata() {
+      let arr = {};
+      try {
+        let res = axios.get("http://localhost:3000/posts");
+        let arr = res;
+        console.log(arr);
         console.log("hello");
       } catch (error) {
         console.log(error);
       }
     }
-    postdata()
+    getdata();
+    async function postdata() {
+      let obj = {
+        name: "hemraj",
+        age: 21,
+      };
+      try {
+        let res = axios.post("http://localhost:3000/posts", obj);
+      } catch (error) {
+        console.log(res);
+      }
+    }
+    postdata();
+    async function deletes(){
+      
+      try {
+        let del=axios .delete("http://localhost:3000/posts")
+      } catch (error) {
+        
+      }
+    }
+    
   </script>
 </html>
