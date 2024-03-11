@@ -176,7 +176,7 @@
                         <th>City</th>
                         <th>Action</th></tr>
                     </thead>
-                        <tbody id="tbody"  >
+                        <tbody id="tbody" >
 
                 </tbody>
                 </table>
@@ -190,66 +190,66 @@
             let form = document.querySelector("form");
 
 
-        //     async function postData() {
+            async function postData() {
 
-        //         let obj = {
-        //             name: document.getElementById("name").value,
-        //             email: document.getElementById("email").value,
-        //             city: document.getElementById("city").value,
-        //         };
-        //               if (obj.name === "" || obj.email === "" || obj.city === "") {
-        //           document.getElementById("error").style.visibility = "visible";
-        // setTimeout(() => {
-        //     document.getElementById("error").style.visibility = "hidden";
-        // }, 4000);
-        //             return;
-        //         } else  {
-        // document.getElementById("error").style.visibility = "visible";
-        // document.getElementById("error").style.backgroundColor = "green";
-        // document.getElementById("error").innerText = "Success";
-        // setTimeout(() => {
-        //     document.getElementById("error").style.visibility = "hidden";
-        //     console.log("success");
-        // }, 10000);
-        //         }
-        //         try {
-        //             let res = await axios.post(url, obj);
-        //                 // await getData();
-        //         } catch (error) {
-        //             console.log(error);
-        //         }
-
-        //     }
-
-        async function postData() {
-    let obj = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        city: document.getElementById("city").value,
-    };
-
-    if (obj.name === "" || obj.email === "" || obj.city === "") {
-        document.getElementById("error").innerText = "Error: Please fill in all fields.";
-        document.getElementById("error").style.backgroundColor = "red";
-        document.getElementById("error").style.visibility = "visible";
+                let obj = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    city: document.getElementById("city").value,
+                };
+                      if (obj.name === "" || obj.email === "" || obj.city === "") {
+                  document.getElementById("error").style.visibility = "visible";
         setTimeout(() => {
             document.getElementById("error").style.visibility = "hidden";
         }, 4000);
-        return;
-    }
-
-    try {
-        let res = await axios.post(url, obj);
-        document.getElementById("error").innerText = "Success: Data submitted successfully.";
-        document.getElementById("error").style.backgroundColor = "green";
+                    return;
+                } else  {
         document.getElementById("error").style.visibility = "visible";
+        document.getElementById("error").style.backgroundColor = "green";
+        document.getElementById("error").innerText = "Success";
         setTimeout(() => {
             document.getElementById("error").style.visibility = "hidden";
-        }, 20000);
-    } catch (error) {
-        console.log(error);
-    }
-}
+            console.log("success");
+        }, 10000);
+                }
+                try {
+                    let res = await axios.post(url, obj);
+                        // await getData();
+                } catch (error) {
+                    console.log(error);
+                }
+
+            }
+
+//         async function postData() {
+//     let obj = {
+//         name: document.getElementById("name").value,
+//         email: document.getElementById("email").value,
+//         city: document.getElementById("city").value,
+//     };
+
+//     if (obj.name === "" || obj.email === "" || obj.city === "") {
+//         document.getElementById("error").innerText = "Error: Please fill in all fields.";
+//         document.getElementById("error").style.backgroundColor = "red";
+//         document.getElementById("error").style.visibility = "visible";
+//         setTimeout(() => {
+//             document.getElementById("error").style.visibility = "hidden";
+//         }, 4000);
+//         return;
+//     }
+
+//     try {
+//         let res = await axios.post(url, obj);
+//         document.getElementById("error").innerText = "Success: Data submitted successfully.";
+//         document.getElementById("error").style.backgroundColor = "green";
+//         document.getElementById("error").style.visibility = "visible";
+//         setTimeout(() => {
+//             document.getElementById("error").style.visibility = "hidden";
+//         }, 20000);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 
 
