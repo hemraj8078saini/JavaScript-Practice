@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body></body>
+  <script>
+    async function getdata() {
+      try {
+        let arr = [];
+
+        let res = await axios.get("https://dummyjson.com/products");
+        console.log(res);
+        // document.write(res);
+        let data = await res.request;
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    // getdata();
+    // -----------------postdata-------------->
+
+    async function givedata() {
+      try {
+        const productId = 1; // Assuming you want to delete product with ID 1
+
+        const response = await axios.delete(
+          `https://dummyjson.com/products/${productId}`
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    givedata();
+  </script>
+</html>
