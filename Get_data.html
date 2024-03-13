@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card {
+        width: 50%;
+        height: auto;
+      }
+    </style>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+      integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div class="card"></div>
+
+    <script>
+      async function fetchData() {
+        try {
+          let response = await axios.get("http://localhost:3000/posts");
+          let arr = response.data;
+          console.log(arr);
+          getData(arr);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      function getData(values) {
+        let card = document.querySelector(".card");
+        values.forEach((element) => {
+          let id = document.createElement("p");
+          id.innerText = element.id;
+          let title = document.createElement("p");
+          title.innerText = element.title;
+          let price = document.createElement("p");
+          price.innerText = element.price;
+
+          let div = document.createElement("div");
+          div.appendChild(id);
+          div.appendChild(title);
+          div.appendChild(price);
+
+          card.appendChild(div);
+        });
+      }
+
+      fetchData();
+    </script>
+  </body>
+</html>
