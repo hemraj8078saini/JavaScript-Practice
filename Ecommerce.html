@@ -1,0 +1,427 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Amazone</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <span>e</span>
+                <span>S</span>
+                <span>H</span>
+                <span>O</span>
+                <span>P</span>
+            </div>
+            <div class="filter_sort">
+                <select name="" id="filter">
+                    <option value="">select by category</option>
+                    <option value="electronics">electronics</option>
+                    <option value="jewelery">jewelery</option>
+                    <option value="men's clothing">men's clothing</option>
+                </select>
+                <select name="" id="sort">
+                    <option value="">---sort---</option>
+                    <option value="">---sort---</option>
+                    <option value="">---sort---</option>
+                    <option value="">---sort---</option>
+                </select>
+            </div>
+            <div class="Search">
+                <input type="text" placeholder="Search" />
+            </div>
+
+            <div class="cart">
+                <a href="#"><i class="fa-solid fa-user"></i></a>
+                <a href="./cart.html"
+                    ><i class="fa-solid fa-cart-shopping"></i
+                    ><span id="cart"> : 0</span></a
+                >
+            </div>
+        </nav>
+
+        <div id="container"></div>
+        <div class="prev">
+            <button id="prev" onclick="changePage(currentPage - 1)">
+                Prev
+            </button>
+            <span id="page_number">1</span>
+            <button id="next" onclick="changePage(currentPage + 1)">
+                Next
+            </button>
+        </div>
+
+        <script>
+            let currentPage = 1;
+            let itemsPerPage = 10;
+            let arr = [];
+
+            async function getData() {
+                try {
+                    let res = await fetch("https://fakestoreapi.com/products");
+                    let data = await res.json();
+                    arr = data;
+                    showData();
+                    console.log(data);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            getData();
+
+            let container = document.getElementById("container");
+
+            function showData() {
+                container.innerHTML = ""; // Clear the container before adding new items
+                let startIndex = (currentPage - 1) * itemsPerPage; //pagination
+                let endIndex = startIndex + itemsPerPage; //pagination
+                let currentItems = arr.slice(startIndex, endIndex); //pagination
+                currentItems.forEach((item) => {
+                    let div = document.createElement("div");
+                    let img = document.createElement("img");
+                    img.src = item.image;
+                    let category = document.createElement("p");
+                    category.innerText = item.category;
+                    let desc = document.createElement("p");
+                    desc.innerText = item.description.substring(0, 50) + "...";
+                    let price = document.createElement("h3");
+                    price.innerText = `$ ${item.price}`;
+                    let btn = document.createElement("button");
+                    btn.innerText = "Add To Cart";
+                    btn.addEventListener("click", () => {
+                        addToCart(item);
+                        updatedCartQuantity();
+                    });
+                    div.append(img, category, desc, price, btn);
+                    container.append(div);
+                });
+                updatePagination();
+            }
+
+            function updatePagination() {
+                let totalPages = Math.ceil(arr.length / itemsPerPage);
+                let pageNumber = document.getElementById("page_number");
+                pageNumber.innerText = currentPage;
+                let prev = document.getElementById("prev");
+                prev.disabled = currentPage === 1;
+                let next = document.getElementById("next");
+                next.disabled = currentPage === totalPages;
+            }
+
+            function changePage(page) {
+                currentPage = Math.max(
+                    1,
+                    Math.min(page, Math.ceil(arr.length / itemsPerPage))
+                );
+                showData();
+            }
+
+            function addToCart(value) {
+                let cartData =
+                    JSON.parse(localStorage.getItem("cartData")) || [];
+                cartData.push(value);
+                localStorage.setItem("cartData", JSON.stringify(cartData));
+                alert("Added to Cart");
+            }
+
+            function updatedCartQuantity() {
+                let cartData =
+                    JSON.parse(localStorage.getItem("cartData")) || [];
+                let cartCount = document.getElementById("cart");
+                cartCount.innerText = cartData.length;
+            }
+            updatedCartQuantity();
+
+            let filter = document.getElementById("filter");
+            filter.addEventListener("change", filterFunction);
+
+            function filterFunction() {
+                let filtervalue = document.getElementById("filter").value;
+
+                let filterdata = arr.filter((ele) => {
+
+                    return ele.category == filtervalue;
+                });
+
+                showData(filterdata)
+            }
+        </script>
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: rgba(8, 96, 134, 0.814);
+}
+.logo {
+    font-size: 35px;
+    color: white;
+}
+.logo span:nth-child(1) {
+    color: rgb(238, 196, 9);
+}
+.filter_sort {
+    width: 30%;
+    display: flex;
+    gap: 20px;
+}
+.filter_sort select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.Search {
+    width: 15%;
+}
+.Search input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+}
+
+.cart{
+    display: flex;
+    gap: 40px;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+.cart a{
+    color: rgb(16, 15, 15);
+}
+
+#container{
+    width: 95%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 40px;
+
+}
+
+#container div{
+    padding: 20px;
+    box-shadow: 0px 0px 2px gray;
+}
+#container div p{
+    margin-top: 5px;
+}
+#container div p:nth-child(2){
+    color: rgb(12, 12, 12);
+    font-size:22px;
+    font-weight: bold;
+
+}
+
+.prev{
+    /* border: 1px solid gray; */
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.prev button{
+    padding: 5px 10px;
+}
+#container div p:nth-child(3){
+    color: rgba(62, 61, 61, 0.522);
+    font-size:16px;
+    font-weight: bold;
+
+}
+#container div img{
+    width: 80%;
+    aspect-ratio: 5/5;
+}
+
+#container div h3{
+    padding: 5px 0px;
+}
+
+#container div  button{
+    padding:  5px;
+    cursor: pointer;
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #0fb1f0;
+    color: white;
+
+}
+
+#container div  button:hover{
+        background-color: #0a81b0fd;
+
+    transition: .2s ease-out;
+}
+
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">
+        <span>e</span>
+        <span>S</span>
+        <span>H</span>
+        <span>O</span>
+        <span>P</span>
+    </div>
+    <div class="filter_sort">
+        <select name="" id="filter">
+            <option value="">select by category</option>
+            <option value="electronics">electronics</option>
+            <option value="jewelery">jewelery</option>
+            <option value="men's clothing">men's clothing</option>
+        </select>
+        <select name="" id="sort">
+            <option value="">---sort---</option>
+            <option value="">---sort---</option>
+            <option value="">---sort---</option>
+            <option value="">---sort---</option>
+        </select>
+    </div>
+    <div class="Search">
+        <input type="text" placeholder="Search" />
+    </div>
+
+    <div class="cart">
+        <a href="#"><i class="fa-solid fa-user"></i></a>
+        <a href="./cart.html"><i class="fa-solid fa-cart-shopping"></i><span id="cart"> : 0</span></a>
+    </div>
+</nav>
+
+<div id="container"></div>
+<div class="prev">
+    <button id="prev" onclick="changePage(currentPage - 1)">
+        Prev
+    </button>
+    <span id="page_number">1</span>
+    <button id="next" onclick="changePage(currentPage + 1)">
+        Next
+    </button>
+</div>
+
+<script>
+    let currentPage = 1;
+    let itemsPerPage = 10;
+    let arr = [];
+    let filteredData = [];
+
+    async function getData() {
+        try {
+            let res = await fetch("https://fakestoreapi.com/products");
+            let data = await res.json();
+            arr = data;
+            filteredData = data;
+            showData();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    getData();
+
+    let container = document.getElementById("container");
+
+    function showData() {
+        container.innerHTML = ""; // Clear the container before adding new items
+        let startIndex = (currentPage - 1) * itemsPerPage; //pagination
+        let endIndex = startIndex + itemsPerPage; //pagination
+        let currentItems = filteredData.slice(startIndex, endIndex); //pagination
+        currentItems.forEach((item) => {
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            img.src = item.image;
+            let category = document.createElement("p");
+            category.innerText = item.category;
+            let desc = document.createElement("p");
+            desc.innerText = item.description.substring(0, 50) + "...";
+            let price = document.createElement("h3");
+            price.innerText = `$ ${item.price}`;
+            let btn = document.createElement("button");
+            btn.innerText = "Add To Cart";
+            btn.addEventListener("click", () => {
+                addToCart(item);
+                updatedCartQuantity();
+            });
+            div.append(img, category, desc, price, btn);
+            container.append(div);
+        });
+        updatePagination();
+    }
+
+    function updatePagination() {
+        let totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        let pageNumber = document.getElementById("page_number");
+        pageNumber.innerText = currentPage;
+        let prev = document.getElementById("prev");
+        prev.disabled = currentPage === 1;
+        let next = document.getElementById("next");
+        next.disabled = currentPage === totalPages;
+    }
+
+    function changePage(page) {
+        currentPage = Math.max(
+            1,
+            Math.min(page, Math.ceil(filteredData.length / itemsPerPage))
+        );
+        showData();
+    }
+
+    function addToCart(value) {
+        let cartData =
+            JSON.parse(localStorage.getItem("cartData")) || [];
+        cartData.push(value);
+        localStorage.setItem("cartData", JSON.stringify(cartData));
+        alert("Added to Cart");
+    }
+
+    function updatedCartQuantity() {
+        let cartData =
+            JSON.parse(localStorage.getItem("cartData")) || [];
+        let cartCount = document.getElementById("cart");
+        cartCount.innerText = cartData.length;
+    }
+    updatedCartQuantity();
+
+    let filter = document.getElementById("filter");
+    filter.addEventListener("change", filterFunction);
+
+    function filterFunction() {
+        let filterValue = document.getElementById("filter").value;
+        filteredData = arr.filter((item) => {
+            return filterValue === "" || item.category === filterValue;
+        });
+        currentPage = 1; 
+        showData();
+    }
+</script>
+</body>
+</html>
