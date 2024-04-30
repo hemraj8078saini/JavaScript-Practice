@@ -20,7 +20,7 @@
                         //    positive number or negative number
 
     // let x=5;
-    // x>0?console.log(" number is positive number"):console.log("number is negative number")
+    // x>=0?console.log(" number is positive number"):console.log("number is negative number")
 
                          // Login Program
         
