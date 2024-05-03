@@ -404,8 +404,7 @@ nav {
     }
 
     function updatedCartQuantity() {
-        let cartData =
-            JSON.parse(localStorage.getItem("cartData")) || [];
+        let cartData =JSON.parse(localStorage.getItem("cartData")) || [];
         let cartCount = document.getElementById("cart");
         cartCount.innerText = cartData.length;
     }
