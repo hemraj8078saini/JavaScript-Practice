@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+     .heading{
+      color:blue;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+  <script>
+    
+    async function getdata() {
+      try {
+        let res = await axios.get("http://localhost:3000/posts");
+        console.log(res);
+        showdata(res.data); // Pass the data to the showdata function
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+    
+    async function showdata(data) {
+      const container = document.querySelector('.container');
+      data.forEach((item) => {
+        let name = document.createElement("h2");
+        name.innerText = item.name;
+        // name.classList("heading")
+        let age = document.createElement("h3");
+        age.innerText = item.age;
+        let email = document.createElement("h3");  
+        email.innerText = item.email;
+        container.appendChild(name);
+        container.appendChild(age);
+        container.appendChild(email);
+      });
+    }
+    
+    getdata();
+  </script>
+</html>
