@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech Converter</title>
+</head>
+<body>
+    <h1>Text to Speech Converter</h1>
+    <textarea id="text-to-convert" rows="4" cols="50" placeholder="Enter text to convert"></textarea><br>
+    <button id="convert-button">Convert</button>
+
+    <script>
+        const convertButton = document.getElementById('convert-button');
+        const textToConvert = document.getElementById('text-to-convert');
+
+        convertButton.addEventListener('click', () => {
+            const text = textToConvert.value;
+            if (!text) return;
+            
+            // Create speech synthesis object
+            const synth = window.speechSynthesis;
+            
+            // Cancel any previous speech
+            synth.cancel();
+            
+            // Create new speech utterance
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Speak the text
+            synth.speak(utterance);
+        });
+    </script>
+</body>
+</html>

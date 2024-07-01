@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr=[]
+    let form=document.createElement("form")
+    let div=document.createElement("div")
+     let namelabel=document.createElement("label")
+     namelabel.innerText="Name:-"
+     let nameInput=document.createElement("input")
+     nameInput.setAttribute("type","text")
+     let br=document.createElement("br")
+     let emaillabel=document.createElement("label")
+     emaillabel.innerText="Email:-"  
+     let emailInput=document.createElement("input")
+     emailInput.setAttribute("type","text")
+     let br1=document.createElement("br")
+     btn=document.createElement("button")
+     btn.innerText="submit"
+     div.append(namelabel,nameInput,br,emaillabel,emailInput,br1,btn)
+     form.append(div)
+    document.body.append(form)
+    form.addEventListener("click",getdata)
+    function getdata(e){
+    e.preventDefault()
+        let obj={
+            name:nameInput.value,      
+            email:emailInput.value
+        }
+        arr.push(obj);                                                    
+    }
+    console.log(arr)                              
+    form.reset()
+    
+   
+
+
+     
+</script>
+</html>

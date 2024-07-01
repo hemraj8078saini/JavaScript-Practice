@@ -14,6 +14,3 @@ while(i<arr.length){
 
 console.log(sum);
 
-
-//     calculate sum ,average and count of an array of even numbers.
-

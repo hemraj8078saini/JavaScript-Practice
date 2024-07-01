@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Border</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+   body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Background color */
+}
+
+.flower-border {
+  position: relative;
+  padding: 50px; /* Adjust padding as needed */
+}
+
+.flower-border:before, .flower-border:after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ff77aa; /* Flower color */
+}
+
+.flower-border:before {
+  top: -25px; /* Adjust position to cover top edge */
+  left: -25px; /* Adjust position to cover left edge */
+  width: 50px; /* Flower size */
+  height: 50px; /* Flower size */
+}
+
+.flower-border:after {
+  bottom: -25px; /* Adjust position to cover bottom edge */
+  right: -25px; /* Adjust position to cover right edge */
+  width: 50px; /* Flower size */
+  height: 50px; /* Flower size */
+}
+
+  </style>
+</head>
+<body>
+  <div class="flower-border">
+    <!-- Content goes here -->
+    <h1>Welcome to My Garden</h1>
+    <p>Explore the beauty of nature!</p>
+  </div>
+</body>
+</html>

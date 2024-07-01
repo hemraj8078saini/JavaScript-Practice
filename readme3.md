@@ -1,10 +1,26 @@
-                                    
+Q. 1  print table of two using map in javascript ?
+      for ex. const numbers = [1, 2,3, 4, 5,6,7,8,9,10];
 
-Question 1:Create an HTML document with a main_container div (id:"main-container").
-Inside the main container, add ten child div elements (id's: "box1", "box2", "box3", "box4", "box5", "box6", "box7", "box8", "box9", "box10") with some content or styling.
-and reverse all the boxes and give space(margin) to the all boxes.
-Note:-kindly use flex property
-Note:-box1,box2.......box10;(lorem10)
+        output:[2,4,6,8,10,12,14,16,18,20]
 
-Question 2: create a container div and inside container div create a inner div and take a image and set it into  center of div with out its parents div .
-example:-div>div>image
+Q.2 print number 1 to 10 using for each in javascript ?
+        for ex. const numbers=[1, 2,3, 4, 5,6,7,8,9,10];
+        output:  1
+                 2
+                 3
+                 4 
+                 .
+                 .
+                 9
+                 10
+
+Q.3 please filter the values where city is jaipur and mumbai ?
+     const Details = [
+   { name: 'devid', city:'jaipur' },
+   { name: 'rahul', city:'jodhpur' },
+   {  name: 'ram', city:'delhi' },
+    {  name: 'vivek', city:'mumbai' }
+];
+
+
+  

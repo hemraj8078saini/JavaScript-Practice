@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        border: 2px solid green;
+        border-radius: 20px;
+        padding: 30px;
+      }
+      input {
+        height: 30px;
+        border-radius: 10px;
+      }
+      #btn {
+        width: 100px;
+        margin: auto;
+        margin-top: 20px;
+      }
+      table {
+        margin: auto;
+        width: 50%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <h1 style="text-align: center">Registration Form</h1>
+      <label>Name:</label>
+      <input type="text" id="name" placeholder="Please enter your name" />
+      <label>Email:</label>
+      <input type="email" id="email" placeholder="Please enter your email" />
+      <label>City:</label>
+      <input type="text" id="course" placeholder="Please enter your city" />
+      <button style="text-align: center" type="submit" id="btn">Submit</button>
+    </form>
+    <div id="table"></div>
+  </body>
+  <script>
+    let form = document.getElementById("form");
+    let btn = document.getElementById("btn");
+    let tableContainer = document.getElementById("table");
+    
+
+    let arr = JSON.parse(localStorage.getItem("userdetails")) || [];
+    console.log(arr, "69");
+
+    btn.addEventListener("click", getData);
+
+    function getData(e) {
+      e.preventDefault();
+      let details={
+        name:document.getElementById("name").value,
+        email:document.getElementById("email").value,
+        course:document.getElementById("course").value
+      }
+      if(details.name==" "||details.email==""||details.course==" "){
+        alert("please fill form")
+      }
+      else {
+       arr.push(details)
+
+        localStorage.setItem("userdetails", JSON.stringify(arr));
+        form.reset();
+        displayData(arr);
+      }
+    }
+
+    function displayData(user) {
+      tableContainer.innerHTML = "";
+
+      let table = document.createElement("table");
+      let thead = document.createElement("thead");
+      let tr = document.createElement("tr");
+
+      let th1 = document.createElement("th");
+      th1.innerText = "Sr.no";
+      let th2 = document.createElement("th");
+      th2.innerText = "Name";
+      let th3 = document.createElement("th");
+      th3.innerText = "Email";
+      let th4 = document.createElement("th");
+      th4.innerText = "Course";
+      let update = document.createElement("th");
+      update.innerText = "update";
+
+      tr.append(th1, th2, th3, th4, update);
+      thead.append(tr);
+      table.append(thead);
+
+      let tbody = document.createElement("tbody");
+
+      user.forEach((ele, index) => {
+        let tr = document.createElement("tr");
+
+        let td1 = document.createElement("td");
+        td1.innerText = index + 1;
+        let td2 = document.createElement("td");
+        td2.innerText = ele.name;
+        let td3 = document.createElement("td");
+        td3.innerText = ele.email;
+        let td4 = document.createElement("td");
+        td4.innerText = ele.course;
+        let td5=document.createElement("td")
+        let add=document.createElement("button")
+        add.innerText="add";
+        
+      add.addEventListener("click",()=>{
+        adddata("adddata",ele)
+        alert("data added")
+      })
+          let del = document.createElement("button");
+          
+          del.innerText = "delete";
+          del.addEventListener("click", () => {
+            deledata(arr,index)
+            alert("delete successfully")
+            displayData(arr);
+            });
+          let edit=document.createElement("button")
+          edit.innerText="Edit";
+          edit.addEventListener("click",()=>{
+                    editdata(ele,index)
+                    let update={
+              name : document.getElementById("name").value=ele.name,
+              email : document.getElementById("email").value=ele.email,
+              course : document.getElementById("course").value=ele.course
+
+             }
+             editIndex=index;
+                    
+          
+          })
+           td5.append(add,del,edit)
+        tr.append(td1, td2, td3, td4,td5);
+        tbody.append(tr);
+        table.append(tbody);
+        tableContainer.append(table);
+      });
+    }
+  function adddata(key,value){
+    let newdata=JSON.parse(localStorage.getItem("adddata"))||[]
+    newdata.push(value)
+    localStorage.setItem("adddata",JSON.stringify(newdata))
+  }
+      function deledata(data,index){
+        console.log("delete data");
+        data.splice(index, 1);
+        localStorage.setItem("userdetails", JSON.stringify(data));
+
+     }
+     function editdata(value){
+      // console.log(value)
+      // let update={
+      //         name : document.getElementById("name").value=ele.name,
+      //         email : document.getElementById("email").value=ele.email,
+      //         course : document.getElementById("course").value=ele.course
+
+      //        }
+      //        editindex=index;
+
+     }
+   
+    displayData(arr);
+  </script>
+</html>

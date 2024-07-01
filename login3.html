@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Simple Form</h2>
+    <form id="form">
+      <label>name</label>
+      <input type="text" id="name" placeholder="enter your name" /><br />
+      <label>email</label>
+      <input type="email" id="email" placeholder="enter your email" /><br />
+      <button id="btn">submit</button>
+    </form>
+    <div id="table"></div>
+  </body>
+  <script>
+      let arr = JSON.parse(localStorage.getItem("mydata")) || [];
+    let tablecontainer=document.getElementById("table")
+    console.log(arr,"localstoraga");
+    let btn = document.getElementById("btn");
+    btn.addEventListener("click", getdata);
+    function getdata(e) {
+        e.preventDefault()
+      let obj = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+    };
+    arr.push(obj);
+    form.reset()
+    console.log(arr)
+    localStorage.setItem("mydata", JSON.stringify(arr));
+    
+    showdata(arr)
+    }
+    let table=document.createElement("table")
+        let tbody=document.createElement("tbody")
+        let thead=document.createElement("thead")
+        let th=document.createElement("th")
+        th.innerText="Name"
+        let th1=document.createElement("th")
+        th1.innerText="Email"
+        thead.append(th,th1)
+        tbody.append(thead)
+        table.append(tbody)
+        tablecontainer.append(table)
+    function showdata(data){
+       
+        data.forEach((e)=>{
+            let tr=document.createElement("tr")
+            let td=document.createElement("td")
+            td.innerText=e.name
+            let td1=document.createElement("td")
+            td1.innerText=e.email
+            tr.append(td,td1)
+            tbody.append(tr)
+            table.append(tbody)
+            tablecontainer.append(table)
+            
+        })
+    }
+    </script>
+</html>

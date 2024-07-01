@@ -142,13 +142,23 @@
           displayData(arr);
         });
 
-        let edit = document.createElement("button");
-        edit.innerText = "Edit";
-        edit.addEventListener("click", () => {
+        // let edit = document.createElement("button");
+        // edit.innerText = "Edit";
+        // edit.addEventListener("click", () => {
+        //   document.getElementById("name").value = ele.name;
+        //   document.getElementById("email").value = ele.email;
+        //   document.getElementById("course").value = ele.course;
+        //   editIndex = index;
+        let edit=document.createElement("button");
+        edit.innerText="Edit";
+        edit.addEventListener("click",()=>{
           document.getElementById("name").value = ele.name;
           document.getElementById("email").value = ele.email;
           document.getElementById("course").value = ele.course;
-          editIndex = index;
+          editIndex=index;
+          
+        
+          
         });
         let cart=document.createElement("button")
         cart.innerText=" add to cart";

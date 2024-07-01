@@ -9,18 +9,15 @@
             display:inline-block;
         }
         #main_container{
-            /* border:2px solid black; */
             text-align: center;
         }
         .div2{
             display: grid;
             width: 400px;
-            /* border: 1px solid black; */
             grid-template-columns: repeat(3,1fr);
         }
         #nametd{
             margin-right: 20px;
-            /* border:2px solid black */
         }
     </style>
 </head>
@@ -30,7 +27,7 @@
     <label>name</label><input id="name" type="text" placeholder="enter your name"><br>
     <label>email</label><input id="email" type="email" placeholder="enter your email"><br>
     <button id="btn">submit</button>
-    <table border="2px">
+    <!-- <table border="2px">
         <thead>
             <td>name</td>
             <td>email</td>
@@ -42,13 +39,11 @@
                 <td id="emailtd"></td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
     
     <script>
         let arr=JSON.parse(localStorage.getItem('data'))||[]
-        
         let div=document.getElementById("main_container")
-       
         let nameinput=document.getElementById("name")
         let emailinput=document.getElementById("email")
         let button=document.getElementById("btn")
@@ -60,36 +55,42 @@
             arr.push(obj)
             
             
-            //    console.log(arr);
-            localStorage.setItem("data",JSON.stringify(arr))
-            
-        }))
-        // console.log(arr,'getitem');
         
-    function getvalues(arr){
-        arr.foreach((e)=>{
-            // let div2=document.createElement("div")
-            // div2.classList="div2"
-            // let h2=document.createElement("h2");
-            // h2.innerText=e.name;
-            // let h4=document.createElement("h4")
-            // h4.innerText=e.email;
-            // div2.append(h2,h4)
-            // div.append(div2)
-
-
+            
+            
+            localStorage.setItem("data",JSON.stringify(arr))
+        }))
+        getvalues(arr);
+        
+        
+        function getvalues(arr){
+            arr.map((e)=>{
+                
+                let div2=document.createElement("div")
+                div2.classList="div2"
+                let h2=document.createElement("h2");
+                h2.innerText=e.name;
+                let h4=document.createElement("h4")
+                h4.innerText=e.email;
+                div2.append(h2,h4)
+                div.append(div2)
+                
+                
                 //  tablular form
-
-            let table=document.getElementsByTagName("table")
-            let nametd=document.getElementById("nametd")
-            nametd.innerText=e.name
-            let emailtd=document.getElementById("emailtd")
-            emailtd.innerText=e.email
-
-
-        })
-    }
-    getvalues(arr);
+                
+                // let table=document.getElementsByTagName("table")
+                // table.innerText=''
+                // let nametd=document.getElementById("nametd")
+                // nametd.innerText=e.name
+                
+                // let emailtd=document.getElementById("emailtd")
+                // emailtd.innerText=e.email
+                
+                
+                
+            })
+        }
+        getvalues(arr);
        
     //    console.log(arr);
     </script>

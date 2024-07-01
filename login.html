@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        form{
+            width: 80%;
+            /* border: 2px solid black;  */
+            margin: 60px auto;
+            text-align: center;
+            height: 50vh;
+            background-color: aqua;
+        }
+        label,input{
+            font-size: 30px;
+            margin: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        button{
+            width: 100px;
+            background-color: blueviolet;
+            font-size: large;
+            border-radius: 30px;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <h3 id="name"></h3>
+    <h4 id="email"></h4>
+  </body>
+  <script>
+    let arr=JSON.parse(localStorage.getItem('user'))||[];
+    console.log(arr,'localstorage');
+    let form = document.createElement("form");
+    let div = document.createElement("div");
+    let namelabel = document.createElement("label");
+    namelabel.innerText = "Name:-";
+    let nameinput = document.createElement("input");
+    nameinput.setAttribute("type", "text");
+    nameinput.placeholder="enter your name";
+    let br = document.createElement("br");
+    let emaillabel = document.createElement("label");
+    emaillabel.innerText = "Email:-";
+    let emailinput = document.createElement("input");
+    emailinput.setAttribute("type", "email");
+    emailinput.placeholder="enter your name";
+    let br2 = document.createElement("br");
+    let btn=document.createElement("button")
+    btn.innerText="submit";
+    btn.addEventListener("click",getdata)
+    function getdata(e){
+      e.preventDefault()
+      let obj={
+        name:nameinput.value,
+        email:emailinput.value
+      }
+      arr.push(obj);
+      console.log(arr)
+      localStorage.setItem("user",JSON.stringify(arr))
+      display(arr)
+         form.reset()
+        
+    }
+    // 
+    function display(arr){
+     
+    arr.map((e)=>{
+      let name=document.getElementById("name");
+      name.innerText=e.name;
+      console.log(name,'this is name');
+      let email=document.getElementById("email")
+      email.innerText=e.email;
+      console.log(email,'this is email');
+      
+
+      
+    })
+  }
+  
+  
+  div.append(namelabel, nameinput, br, emaillabel, emailinput,br2,btn ,name,email);
+  form.append(div);
+  
+  document.body.append(form);
+  display();
+
+    
+  </script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>please fill details for making cards</h3>
+    <span>Name:</span><input type="text" placeholder="enter product name" id="name"/>
+    <span>Image url:</span><input type="text" placeholder="enter product image url" id="img"/>
+    <span>Price:</span><input type ="text" placeholder="enter product price" id="price"/>
+    <button id="btn">submit</button>
+
+</body>
+<script>
+    let arr=[];
+    let obj={
+        name:document.getElementById("name").value,
+        img:document.getElementById("img").value,
+        price:document.getElementById("price").value
+    }
+    arr.push(obj)
+    console.log(arr);
+</script>
+</html>

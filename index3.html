@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registration form</h1>
+    <form id="form">
+      <label>Name</label>
+      <input type="text" id="name" placeholder="enter your name" /><br />
+      <label>Email</label>
+      <input type="email" id="email" placeholder="enter your email" /><br />
+      <button id="btn">submit</button>
+    </form>
+    <div id="table">
+   
+    </div>
+  </body>
+  <script>
+    let arr = JSON.parse(localStorage.getItem("data"))||[]
+    console.log(arr ,"localstorage")
+    let form = document.getElementById("form");
+    console.log(form);
+
+    let btn = document.getElementById("btn");
+    btn.addEventListener("click", getdata);
+    function getdata(e) {
+      e.preventDefault();
+      let obj = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value
+      };
+
+      arr.push(obj);
+      console.log(arr);
+      localStorage.setItem("data",JSON.stringify(arr))
+      showdata(arr)
+      form.reset();
+          
+    }
+    let tablecontainer=document.getElementById("table")
+    let table=document.createElement("table")
+    let thead=document.createElement("thead")
+     let tbody=document.createElement("tbody")
+     let tr=document.createElement("tr")
+     let th=document.createElement("th")
+     th.innerText="sr.no"
+     let th1=document.createElement("th")
+     th1.innerText="name";
+     let  th2=document.createElement("th")
+     th2.innerText="email"
+     tr.append(th,th1,th2);
+     thead.append(tr)
+     table.append(thead)
+     tablecontainer.append(table)
+     function showdata(data){
+       tbody.innerHTML=null;
+       data.forEach((ele,index)=>{
+         index++
+        let tr=document.createElement("tr")
+         let td=document.createElement("td")
+
+         td.innerText=index
+         let td1=document.createElement("td")
+         td1.innerText=ele.name;
+         let td2=document.createElement("td")
+         td2.innerText=ele.email
+         tr.append(td,td1,td2)
+         tbody.append(tr)
+         table.append(tbody)
+         tablecontainer.append(table)
+         
+        })
+        console.log(showdata)
+      }
+      showdata(arr)
+     
+
+  </script>
+</html>
