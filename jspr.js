@@ -10,9 +10,3 @@ let x=10;
 function hello(){
     var a=40
 }
-
-const b=3;
-function a(){
-    console.log(b);
-}
-a()
