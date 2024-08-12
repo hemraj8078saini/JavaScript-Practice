@@ -1,12 +1,10 @@
-console.log("first");
-async function  callstack(){
-// let res=await fetch("https://fakestoreapi.com/products")
-let res= 8;
-console.log(res);
-}
-callstack();
-console.log("last")
-let x=10;
+// console.log("hello");
+// setTimeout( async function xyz(){
+//    await console.log("hello world");
+    
+// },3000)
+// console.log("third")
 function hello(){
-    var a=40
+
 }
+hello(3,4)

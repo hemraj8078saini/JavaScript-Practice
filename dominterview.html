@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <title>Document</title>
 </head>
 <body>
-    <h1 class="text" id="textest">This is js</h1>
+    <script>
+        console.log("first");
+        
+        async function getData() {
+    try {
+        const result =  axios.get ("https://fakestoreapi.com/products"); // Waits for fetchData to resolve
+        console.log(result); // Output: 'Some data'
+        console.log("function")
+    } catch (error) {
+        console.error(error); // Handles any errors if fetchData rejects
+    } finally {
+        console.log('Data fetching complete.'); // Runs regardless of success or failure
+    }
+}
+console.log('last')
+
+getData();
+    </script>
 </body>
-<script>
-    let heading=document.querySelector('textest')
-    console.log(heading);
-    
-</script>
 </html>
